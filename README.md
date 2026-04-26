@@ -76,6 +76,12 @@ This blog supports the following environment variables:
 | `NEXT_PUBLIC_BLOG_TITLE` | Build-time | The main title displayed in the header. Defaults to "Blog". |
 | `FOOTER_MESSAGE` | Runtime | Optional message displayed at the top of the footer. |
 
+## Note on Runtime Variables in Next.js
+
+For runtime env vars to work in Next.js server components, the component must opt out of static rendering. The Footer uses `noStore()` from `next/cache` to ensure `FOOTER_MESSAGE` is read at request time, not build time.
+
+Without this, statically generated pages bake in env var values at build time.
+
 
 # Notes
 

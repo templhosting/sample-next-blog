@@ -1,7 +1,9 @@
+import { unstable_noStore as noStore } from "next/cache";
 import Container from "@/app/_components/container";
 import { EXAMPLE_PATH } from "@/lib/constants";
 
 export function Footer() {
+  noStore(); // Opt out of static rendering to read runtime env vars
   const footerMessage = process.env.FOOTER_MESSAGE;
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200 dark:bg-slate-800">
